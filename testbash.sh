@@ -94,7 +94,7 @@ lsblk > "$INFODIR/$DISK"
 
 # 27. Вывести информация о системном диске и сохранить ее в файл $INFODIR/$SMART.
 if [ -e /dev/sda ]; then
-  smartinfo -a /dev/sda > "$INFODIR/$SMART"
+  smartctl -a /dev/sda > "$INFODIR/$SMART"
 else
   blkid | grep -i 'UUID' > "$INFODIR/$SMART"
 fi

@@ -81,7 +81,7 @@ rm -r /mnt/storage/pw2/mydir
 tail -n 2 /mnt/storage/pw2/file2
 
 # 23. Добавить переменные.
-# (Сделано ранее в начале скрипта)
+# (Сделано в начале скрипта)
 
 # 24. Создать директорию $INFODIR.
 mkdir -p "$INFODIR"

@@ -2,7 +2,7 @@
 
 # Проверка наличия аргумента
 if [ -z "$1" ]; then
-  echo "Ошибка: необходимо указать первый аргумент для INFODIR."
+  echo "Error: need an argument for INFODIR."
   exit 1
 fi
 
@@ -23,7 +23,7 @@ echo "Hello World" > /storage/pw2/file1
 date > /mnt/storage/pw2/file2
 
 # 4. Добавить строку своим именем в файл file1.
-echo "Ваше Имя" >> /mnt/storage/pw2/file1
+echo "Oleg" >> /mnt/storage/pw2/file1
 
 # 5. Добавить 3 строки Linux is awesome в файл file2.
 for i in {1..3}; do echo "Linux is awesome" >> /mnt/storage/pw2/file2; done

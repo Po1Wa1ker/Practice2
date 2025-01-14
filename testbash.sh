@@ -17,7 +17,7 @@ NET="networkinfo"
 mkdir -p /mnt/storage/pw2
 
 # 2. Создать файл file1 и записать в него Hello World.
-echo "Hello World" > /storage/pw2/file1
+echo "Hello World" > /mnt/storage/pw2/file1
 
 # 3. Создать файл file2 и записать в него текущую дату и время.
 date > /mnt/storage/pw2/file2
@@ -53,7 +53,7 @@ mkdir /mnt/storage/pw2/dir1
 mv /mnt/storage/pw2/file5 /mnt/storage/pw2/dir1
 
 # 14. Создать символическую ссылку на файл file4 в текущей директории.
-ln -s /mnt/storage/pw2/file4 ./file4_link
+ln -s /mnt/storage/pw2/file4 /mnt/storage/pw2/file4_link
 
 # 15. Скопировать содержимое директории dir1 в директорию dir2.
 mkdir /mnt/storage/pw2/dir2
@@ -66,6 +66,7 @@ ls -1
 > /mnt/storage/pw2/dir1/file5
 
 # 18. Вывести на экран информацию о системе и ядре и сохранить ее в файл file6.
+uname -a
 uname -a > /mnt/storage/pw2/file6
 
 # 19. Создать новую директорию с именем mydir.

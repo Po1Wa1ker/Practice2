@@ -32,7 +32,7 @@ mkdir -p "$MOUNT_POINT"
 PARTUUID=$(blkid -s PARTUUID -o value "$DEVICE")
 
 # Добавление записи в /etc/fstab
-echo "PARTUUID=$PARTUUID $MOUNT_POINT $FILESYSTEM_TYPE defaults 0 0" >> /etc/fstab
+echo "UUID=$PARTUUID $MOUNT_POINT $FILESYSTEM_TYPE defaults 0 0" >> /etc/fstab
 
 # Монтирование файловой системы
 mount "$MOUNT_POINT"

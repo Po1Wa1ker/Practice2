@@ -14,75 +14,72 @@ RAM="raminfo"
 NET="networkinfo"
 
 # 1. Создать директорию pw2 в /storage.
-mkdir -p /mnt/storage/pw2
+mkdir -p /storage/pw2
 
 # 2. Создать файл file1 и записать в него Hello World.
-echo "Hello World" > /mnt/storage/pw2/file1
+echo "Hello World" > /storage/pw2/file1
 
 # 3. Создать файл file2 и записать в него текущую дату и время.
-date > /mnt/storage/pw2/file2
+date > /storage/pw2/file2
 
 # 4. Добавить строку своим именем в файл file1.
-echo "Oleg" >> /mnt/storage/pw2/file1
+echo "Oleg" >> /storage/pw2/file1
 
 # 5. Добавить 3 строки Linux is awesome в файл file2.
-for i in {1..3}; do echo "Linux is awesome" >> /mnt/storage/pw2/file2; done
+for i in {1..3}; do echo "Linux is awesome" >> /storage/pw2/file2; done
 
 # 6. Скопировать содержимое файла file1 в файл file2 (не перезаписывая его).
-cat /mnt/storage/pw2/file1 >> /mnt/storage/pw2/file2
+cat /storage/pw2/file1 >> /storage/pw2/file2
 
 # 7. Создать файл file3 и добавить в него содержимое файлов file1 и file2.
-cat /mnt/storage/pw2/file1 /mnt/storage/pw2/file2 > /mnt/storage/pw2/file3
+cat /storage/pw2/file1 /storage/pw2/file2 > /storage/pw2/file3
 
 # 8. Переименовать файл file1 в newfile1.
-mv /mnt/storage/pw2/file1 /mnt/storage/pw2/newfile1
+mv /storage/pw2/file1 /storage/pw2/newfile1
 
 # 9. Перенаправить вывод команды ls в файл file4 3 раза.
-for i in {1..3}; do ls >> /mnt/storage/pw2/file4; done
+for i in {1..3}; do ls >> /storage/pw2/file4; done
 
 # 10. Отобразить содержимое файла file4 и сохранить его в файл file5.
-cat /mnt/storage/pw2/file4 > /mnt/storage/pw2/file5
+cat /storage/pw2/file4 > /storage/pw2/file5
 
 # 11. Вывести количество строк в файле file5.
-wc -l < /mnt/storage/pw2/file5
+wc -l < /storage/pw2/file5
 
 # 12. Создать пустую директорию dir1.
-mkdir /mnt/storage/pw2/dir1
+mkdir /storage/pw2/dir1
 
 # 13. Переместить файл file5 в директорию dir1.
-mv /mnt/storage/pw2/file5 /mnt/storage/pw2/dir1
+mv /storage/pw2/file5 /storage/pw2/dir1
 
 # 14. Создать символическую ссылку на файл file4 в текущей директории.
-ln -s /mnt/storage/pw2/file4 /mnt/storage/pw2/file4_link
+ln -s /storage/pw2/file4 /storage/pw2/file4_link
 
 # 15. Скопировать содержимое директории dir1 в директорию dir2.
-mkdir /mnt/storage/pw2/dir2
-cp -r /mnt/storage/pw2/dir1/* /mnt/storage/pw2/dir2/
+mkdir /storage/pw2/dir2
+cp -r /storage/pw2/dir1/* /storage/pw2/dir2/
 
 # 16. Показать только имена файлов в текущей директории.
 ls -1
 
 # 17. Перезаписать файл file5 пустым содержимым.
-> /mnt/storage/pw2/dir1/file5
+> /storage/pw2/dir1/file5
 
 # 18. Вывести на экран информацию о системе и ядре и сохранить ее в файл file6.
 uname -a
-uname -a > /mnt/storage/pw2/file6
+uname -a > /storage/pw2/file6
 
 # 19. Создать новую директорию с именем mydir.
-mkdir /mnt/storage/pw2/mydir
+mkdir /storage/pw2/mydir
 
 # 20. Создать пустой файл с именем file7 в директории mydir.
-touch /mnt/storage/pw2/mydir/file7
+touch /storage/pw2/mydir/file7
 
 # 21. Удалить директорию mydir и все ее содержимое.
-rm -r /mnt/storage/pw2/mydir
+rm -r /storage/pw2/mydir
 
 # 22. Вывести только последние 2 строки файла file2.
-tail -n 2 /mnt/storage/pw2/file2
-
-# 23. Добавить переменные.
-# (Сделано ранее в начале скрипта)
+tail -n 2 /storage/pw2/file2
 
 # 24. Создать директорию $INFODIR.
 mkdir -p "$INFODIR"
@@ -94,11 +91,7 @@ ps aux > "$INFODIR/$PROC"
 lsblk > "$INFODIR/$DISK"
 
 # 27. Вывести информация о системном диске и сохранить ее в файл $INFODIR/$SMART.
-if [ -e /dev/sda ]; then
-  smartctl -a /dev/sda > "$INFODIR/$SMART"
-else
-  blkid | grep -i 'UUID' > "$INFODIR/$SMART"
-fi
+smartctl -a /dev/sda > "$INFODIR/$SMART"
 
 # 28. Вывести информацию об оперативной памяти и сохранить ее в файл $INFODIR/$RAM.
 free -h > "$INFODIR/$RAM"

@@ -35,6 +35,6 @@ UUID=$(blkid -o export "$DEVICE" | grep UUID)
 echo "$UUID $MOUNT_POINT $FILESYSTEM_TYPE defaults 0 0" >> /etc/fstab
 
 # Монтирование файловой системы
-mount "$MOUNT_POINT"
+mount -a
 
 echo "Script ended."
